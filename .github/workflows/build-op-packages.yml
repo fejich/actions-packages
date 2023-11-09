@@ -43,12 +43,14 @@ jobs:
         make defconfig
         make package/n2n/compile V=s -j$(nproc)
         cp $(find . -name n2n-edge_*.ipk) ../n2n-edge_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_MT7621 }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
+        cp $(find . -name n2n-supernode_*.ipk) ../n2n-supernode_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_MT7621 }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
         cd ..
         echo ===============================
         cd ${{ env.DIR_SDK_FILOGIC }}
         make defconfig
         make package/n2n/compile V=s -j$(nproc)
         cp $(find . -name n2n-edge_*.ipk) ../n2n-edge_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_FILOGIC }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
+        cp $(find . -name n2n-supernode_*.ipk) ../n2n-supernode_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_FILOGIC }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
         cd ..
     - name: Create Release
       id: create_release
@@ -76,6 +78,26 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: n2n-supernode_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_MT7621 }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
+        asset_name: n2n-supernode_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_MT7621 }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
+        asset_content_type: application/ipk
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
         asset_path: n2n-edge_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_FILOGIC }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
         asset_name: n2n-edge_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_FILOGIC }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
+        asset_content_type: application/ipk
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: n2n-supernode_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_FILOGIC }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
+        asset_name: n2n-supernode_${{ env.N2N_REPO_BRANCH }}_${{ env.ARCH_FILOGIC }}_${{ env.OP_VER }}_${{ env.BUILD_VER }}.ipk
         asset_content_type: application/ipk
