@@ -28,7 +28,7 @@ jobs:
       run: |
         df -hT $PWD
 
-        wget https://downloads.openwrt.org/releases/${{ env.OP_VER }}/targets/ramips/mt7621/$DIR_SDK_ARMV7.tar.xz
+        wget https://downloads.openwrt.org/releases/${{ env.OP_VER }}/targets/armsr/armv7/$DIR_SDK_ARMV7.tar.xz
         tar -xf ${{ env.DIR_SDK_ARMV7 }}.tar.xz
         ln -sf $PWD/n2n/packages/openwrt $PWD/${{ env.DIR_SDK_ARMV7 }}/package/n2n
         ls -al
