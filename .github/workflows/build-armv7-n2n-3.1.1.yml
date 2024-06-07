@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  BUILD_VER: 1
+  BUILD_VER: n2n-3.1.1
   OP_VER: 23.05.0
   N2N_REPO_BRANCH: 3.1.1
   ARCH_ARMV7: armsr-armv7
