@@ -27,7 +27,7 @@ jobs:
       - name: Building packages
         uses: sbwml/openwrt-gh-action-sdk@go1.20
         env:
-          ARCH: ${{ matrix.arch }}-openwrt-23.05.0
+          ARCH: ${{ matrix.arch }}-openwrt-23.05
           FEEDNAME: packages_ci
           PACKAGES: luci-app-mosdns
           NO_REFRESH_CHECK: true
