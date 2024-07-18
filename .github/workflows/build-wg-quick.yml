@@ -30,11 +30,11 @@ jobs:
         df -hT $PWD
         wget https://downloads.openwrt.org/releases/${{ env.OP_VER }}/targets/ramips/mt7621/$DIR_SDK_MT7621.tar.xz
         tar -xf ${{ env.DIR_SDK_MT7621 }}.tar.xz
-        ln -sf $PWD/wg-quick $PWD/${{ env.DIR_SDK_MT7621 }}/package/network/utils/wg-quick
+        ln -sf $PWD/wg-quick $PWD/${{ env.DIR_SDK_MT7621 }}/package/wg-quick
         
         wget https://downloads.openwrt.org/releases/${{ env.OP_VER }}/targets/mediatek/filogic/$DIR_SDK_FILOGIC.tar.xz
         tar -xf ${{ env.DIR_SDK_FILOGIC }}.tar.xz
-        ln -sf $PWD/wg-quick $PWD/${{ env.DIR_SDK_FILOGIC }}/package/network/utils/wg-quick
+        ln -sf $PWD/wg-quick $PWD/${{ env.DIR_SDK_FILOGIC }}/package/wg-quick
         ls -al
     - name: Build ipk
       run: |
