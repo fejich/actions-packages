@@ -55,8 +55,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: package_${{ env.OP_VER }}_${{ env.BUILD_VER }}
-        release_name: package_${{ env.OP_VER }}_${{ env.BUILD_VER }}
+        tag_name: wg-quick_${{ env.OP_VER }}_${{ env.BUILD_VER }}
+        release_name: wg-quick_${{ env.OP_VER }}_${{ env.BUILD_VER }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
